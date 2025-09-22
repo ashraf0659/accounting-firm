@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - Fine Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafb;
+      color: #333;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1a3c7c;
+      color: #fff;
+      padding: 15px 30px;
+    }
+    header h2 {
+      margin: 0;
+    }
+    header a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      background: #e63946;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    header a:hover {
+      background: #c82333;
+    }
+
+    /* ===== MAIN ===== */
+    main {
+      padding: 30px;
+    }
+    main h1 {
+      margin-bottom: 20px;
+      color: #1a3c7c;
+    }
+
+    /* ===== TABLE ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f1f5f9;
+      color: #1a3c7c;
+      text-align: center;
+    }
+    tr:hover {
+      background: #f9fdf9;
+    }
+
+    /* Status labels */
+    .status-approved {
+      color: green;
+      font-weight: bold;
+    }
+    .status-rejected {
+      color: red;
+      font-weight: bold;
+    }
+    .status-pending {
+      color: orange;
+      font-weight: bold;
+    }
+
+    /* ===== ACTION BUTTONS ===== */
+    button {
+      padding: 6px 12px;
+      margin: 2px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    button[type="submit"] {
+      background: #1a3c7c;
+      color: #fff;
+    }
+    button[type="submit"]:hover {
+      background: #4caf50;
+    }
+    .reject-btn {
+      background: #e63946;
+      color: #fff;
+    }
+    .reject-btn:hover {
+      background: #c82333;
+    }
+    .no-actions {
+      color: gray;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h2>Fine Services - Admin Dashboard</h2>
+    <a href="/admin/logout">Logout</a>
+  </header>
+
+  <main>
+    <h1>Inquiries</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Message</th>
+          <th>Status</th>
+          <th>Document</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% inquiries.forEach(inquiry => { %>
+          <tr>
+            <td><%= inquiry.name %></td>
+            <td><%= inquiry.email %></td>
+            <td><%= inquiry.message %></td>
+
+            <!-- Status -->
+            <td>
+              <% if (inquiry.status === "Approved") { %>
+                <span class="status-approved">Approved</span>
+              <% } else if (inquiry.status === "Rejected") { %>
+                <span class="status-rejected">Rejected</span>
+              <% } else { %>
+                <span class="status-pending">Pending</span>
+              <% } %>
+            </td>
+
+            <!-- Document -->
+            <td>
+              <% if (inquiry.documentPath) { %>
+                <a href="/uploads/<%= inquiry.documentPath %>" target="_blank">
+                  📄 <%= inquiry.documentOriginalName || inquiry.documentPath %>
+                </a>
+              <% } else { %>
+                <span class="status-rejected">❌ No document uploaded</span>
+              <% } %>
+            </td>
+
+            <!-- Actions -->
+            <td>
+              <% if (inquiry.status === "Pending") { %>
+                <form action="/admin/approve/<%= inquiry._id %>" method="POST" style="display:inline;">
+                  <button type="submit">Approve</button>
+                </form>
+                <form action="/admin/reject/<%= inquiry._id %>" method="POST" style="display:inline;">
+                  <button type="submit" class="reject-btn">Reject</button>
+                </form>
+              <% } else { %>
+                <span class="no-actions">No actions available</span>
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Fine Services - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon1.png" type="image/png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafb;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 12px 40px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .navbar .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .navbar .logo img {
+      max-height: 50px;
+    }
+
+    .navbar nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #1a3c7c;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .navbar nav a:hover {
+      color: #4caf50;
+    }
+
+    .navbar nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #4caf50;
+      transition: width 0.3s ease-in-out;
+    }
+
+    .navbar nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== HERO / WELCOME ===== */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(to right, #1a3c7c, #4caf50);
+      color: #fff;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    .features {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .features h2 {
+      color: #1a3c7c;
+      margin-bottom: 30px;
+    }
+
+    .feature-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .feature {
+      flex: 1;
+      min-width: 220px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature h3 {
+      color: #4caf50;
+      margin-bottom: 10px;
+    }
+
+    /* ===== ABOUT PREVIEW ===== */
+    .about-preview {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .about-preview h2 {
+      color: #1a3c7c;
+      margin-bottom: 15px;
+    }
+
+    .about-preview p {
+      margin-bottom: 20px;
+    }
+
+    .about-preview a {
+      padding: 10px 20px;
+      background: #1a3c7c;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .about-preview a:hover {
+      background: #4caf50;
+    }
+
+    /* ===== FEATURED SERVICES ===== */
+    .services {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .services h2 {
+      color: #1a3c7c;
+      margin-bottom: 30px;
+    }
+
+    .service-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .service {
+      flex: 1;
+      min-width: 250px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    .service h3 {
+      color: #4caf50;
+      margin-bottom: 10px;
+    }
+
+    .services a.more {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #1a3c7c;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .services a.more:hover {
+      background: #4caf50;
+    }
+
+    /* ===== FOOTER ===== */
+    /* footer {
+      background-color: #1a3c7c;
+      color: #f1f5f9;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    footer h3 {
+      color: #a8e6a3;
+      margin-bottom: 10px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      text-align: left;
+    }
+
+    .footer-container div {
+      flex: 1;
+      min-width: 250px;
+      margin: 10px;
+    }
+
+    footer hr {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 20px 0;
+    }
+
+    footer p.center {
+      text-align: center;
+      margin: 0;
+    } */
+     footer {
+      background-color: #1a3c7c;
+      color: #f1f5f9;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    footer h3 {
+      color: #a8e6a3;
+      margin-bottom: 10px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      text-align: left;
+    }
+
+    .footer-container div {
+      flex: 1;
+      min-width: 250px;
+      margin: 10px;
+    }
+
+    footer hr {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 20px 0;
+    }
+
+    footer p {
+      text-align: left;
+      margin: 0;
+      opacity: 0.95;
+    }
+     footer p.center {
+      text-align: center;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-left">
+      <div class="logo">
+        <img src="/fine1.jpeg" alt="Fine Services Logo">
+      </div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/about">About Us</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero / Welcome -->
+  <section class="hero">
+    <h1>Welcome to Fine Services</h1>
+    <p>Your trusted partner in Accounting & Taxation solutions.</p>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="features">
+    <h2>Why Choose Us?</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>10+ Years Experience</h3>
+        <p>Decade-long expertise in accounting and taxation services.</p>
+      </div>
+      <div class="feature">
+        <h3>200+ Trusted Clients</h3>
+        <p>Businesses and individuals who rely on our professional solutions.</p>
+      </div>
+      <div class="feature">
+        <h3>Affordable Fees</h3>
+        <p>Transparent pricing with no hidden charges.</p>
+      </div>
+      <div class="feature">
+        <h3>End-to-End Solutions</h3>
+        <p>From filing to compliance, we handle it all for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="about-preview">
+    <h2>About Fine Services</h2>
+    <p>Fine Services is committed to delivering complete accounting and taxation support to individuals and businesses.
+      We focus on accuracy, compliance, and growth for our clients.</p>
+    <a href="/about">Read More</a>
+  </section>
+
+  <!-- Featured Services -->
+  <section class="services">
+    <h2>Our Featured Services</h2>
+    <div class="service-grid">
+      <div class="service">
+        <h3>Income Tax Filing</h3>
+        <p>Fast, accurate, and compliant IT filing services tailored to your needs.</p>
+      </div>
+      <div class="service">
+        <h3>GST Registration</h3>
+        <p>Simplified GST registration and monthly filing support.</p>
+      </div>
+      <div class="service">
+        <h3>Bookkeeping</h3>
+        <p>Professional bookkeeping services for smooth financial management.</p>
+      </div>
+    </div>
+    <a href="/services" class="more">View All Services</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <h3>Fine Services</h3>
+        <p>Serving you with reliable accounting and tax services.<br>
+          Accuracy, trust, and professionalism in every service we deliver.</p>
+      </div>
+      <div>
+        <h3>Contact Us</h3>
+        <p><b>Phone:</b> +91 9372595680</p>
+        <p><b>Email:</b> FineServicesIHS@gmail.com</p>
+        <p><b>Address:</b> R. No.4, B-wing, Royal C.H.S., Opp Ginger Hotel, Castle mill, Thane(W), 400601</p>
+      </div>
+      <div>
+        <h3>Opening Hours</h3>
+        <p>Mon – Sat: 10:00 AM – 7:00 PM</p>
+        <p>Sunday: Closed</p>
+      </div>
+    </div>
+    <hr>
+    <p class="center">© <%= new Date().getFullYear() %> Fine services All Rights Reserved.</p>
+  </footer>
+
+</body>
+
+</html>

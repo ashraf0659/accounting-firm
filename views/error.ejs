@@ -1,0 +1,52 @@
+<!-- views/error.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Error - Fine Services</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .error-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #e63946;
+      margin-bottom: 15px;
+    }
+    p {
+      color: #333;
+    }
+    a {
+      margin-top: 15px;
+      display: inline-block;
+      padding: 10px 20px;
+      background: #1a3c7c;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    a:hover {
+      background: #4caf50;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-box">
+    <h1>⚠️ Something went wrong</h1>
+    <p><%= message %></p>
+    <a href="/admin">Go back to Dashboard</a>
+  </div>
+</body>
+</html>
