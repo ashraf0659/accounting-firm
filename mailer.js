@@ -50,26 +50,39 @@
 // };
 
 // module.exports = sendMail;
+// mailer.js
 const nodemailer = require("nodemailer");
+require("dotenv").config();
 
+// Create transporter using SendGrid SMTP
 const transporter = nodemailer.createTransport({
   host: "smtp.sendgrid.net",
   port: 587,
   auth: {
-    user: "apikey", // literal string "apikey"
-    pass: process.env.SENDGRID_API_KEY,
-  },
+    user: "apikey",                 // literal string "apikey"
+    pass: process.env.SENDGRID_API_KEY
+  }
 });
 
-const sendMail = async (to, subject, text, html = null) => {
+/**
+ * Send an email
+ * @param {string|string[]} to - Recipient email(s)
+ * @param {string} subject - Subject of the email
+ * @param {string} text - Plain text content
+ * @param {string} [html] - Optional HTML content
+ * @param {object[]} [attachments] - Optional attachments
+ */
+const sendMail = async (to, subject, text, html = null, attachments = []) => {
   try {
     await transporter.sendMail({
-      from: process.env.EMAIL_USER, // must be the verified sender
+      from: process.env.EMAIL_USER, // must be your verified SendGrid sender
       to,
       subject,
       text,
-      html,
+      html,         // pass HTML if needed
+      attachments   // e.g., [{ filename: "file.pdf", path: "./uploads/file.pdf" }]
     });
+
     console.log("✅ Email sent successfully");
   } catch (error) {
     console.error("❌ Error sending email:", error.message);
