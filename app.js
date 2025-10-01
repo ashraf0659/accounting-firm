@@ -28,7 +28,6 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static('public'));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 // Routes 
@@ -37,20 +36,7 @@ app.use("/inquiry", inquiryRoutes);
 // Home Route
 app.get("/", (req, res) => {
   res.render("index", { title: "Accounting Firm" });
-}); // ✅ Services Route
-// app.get("/services", (req, res) => {
-//   const services = [
-//     { name: "Bookkeeping", description: "Maintain accurate financial records", price: 5000 },
-//     { name: "Tax Filing", description: "Income tax and GST filing services", price: 3000 },
-//     { name: "Payroll Management", description: "End-to-end payroll processing", price: 4000 },
-//     { name: "Audit Support", description: "Assistance in statutory and internal audits", price: 7000 },
-//   ];
-//   res.render("service", {
-//     firmName: "Shaikh & Co. Accounting Firm",
-//     services
-//   });
-// }); 
-// ✅ Services Route
+}); 
 app.get("/services", (req, res) => {
   const services = [
     {
@@ -125,17 +111,7 @@ app.get("/about", (req, res) => {
 
 // ✅ Import Inquiry model
 const Inquiry = require("./models/inquiry");
-//✅ Admin Dashboard Route 
-// app.get("/admin", async (req, res) => {
-//   try {
-//     const inquiries = await Inquiry.find().sort({ createdAt: -1 });
-//     // latest first
-//     res.render("admin", { inquiries });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send("Error fetching inquiries");
-//   }
-// });
+
 const adminRoutes = require("./routes/admin");
 app.use("/admin", adminRoutes);
 // Import email routes
