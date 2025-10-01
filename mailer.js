@@ -10,23 +10,16 @@ require("dotenv").config();
 //     pass: process.env.EMAIL_PASS, // app password (not your normal password)
 //   },
 // });
-// const transporter = nodemailer.createTransport({
-//   host: "smtp.gmail.com",
-//   port: 587,            // use STARTTLS
-//   secure: false,        // true = port 465, false = port 587
-//   auth: {
-//     user: process.env.EMAIL_USER, // your Gmail address
-//     pass: process.env.EMAIL_PASS, // Gmail App Password (not normal password)
-//   },
-//   tls: {
-//     rejectUnauthorized: false, // helps in local/dev environments
-//   },
-// });
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,            // use STARTTLS
+  secure: false,        // true = port 465, false = port 587
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, // must be App Password
+    user: process.env.EMAIL_USER, // your Gmail address
+    pass: process.env.EMAIL_PASS, // Gmail App Password (not normal password)
+  },
+  tls: {
+    rejectUnauthorized: false, // helps in local/dev environments
   },
 });
 
