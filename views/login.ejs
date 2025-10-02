@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Admin Login - Fine Services</title>
@@ -7,10 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f1f5f9;
+      background: linear-gradient(135deg, #1a3c7c, #4caf50);
       color: #333;
       display: flex;
       align-items: center;
@@ -21,49 +22,67 @@
     /* ===== LOGIN BOX ===== */
     .login-container {
       width: 100%;
-      max-width: 400px;
+      max-width: 380px;
       background: #ffffff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
       text-align: center;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .login-container img {
+      width: 60px;
+      margin-bottom: 15px;
     }
 
     .login-container h1 {
       color: #1a3c7c;
       margin-bottom: 20px;
-      font-size: 24px;
+      font-size: 26px;
     }
 
-    .login-container input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-    }
+.login-container input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #f9fafb;
+  margin: 12px 0;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* ✅ prevents overflow */
+}
+
+.login-container input:focus {
+  border-color: #1a3c7c;
+  outline: none;
+  box-shadow: 0 0 6px rgba(26, 60, 124, 0.3);
+}
+
+
 
     .login-container button {
       width: 100%;
       padding: 12px;
-      margin-top: 15px;
-      background-color: #1a3c7c;
+      margin-top: 20px;
+      background: #1a3c7c;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       color: #ffffff;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     .login-container button:hover {
       background-color: #4caf50;
+      transform: translateY(-2px);
     }
 
     .login-container p.note {
-      margin-top: 15px;
+      margin-top: 18px;
       font-size: 13px;
       color: #666;
     }
@@ -75,24 +94,42 @@
       font-size: 14px;
       font-weight: bold;
     }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+   
   </style>
 </head>
+
 <body>
 
   <div class="login-container">
-  <h1>Admin Login</h1>
-  <form action="/admin/login" method="POST">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit">Login</button>
-  </form>
-  <p class="note">Authorized access only</p>
+    <img src="/favicon1.png?v=2" alt="Fine Services Logo">
+    <h1>Admin Login</h1>
+    <form action="/admin/login" method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p class="note">🔒 Authorized access only</p>
 
-  <% if (error) { %>
-    <p class="error"><%= error %></p>
-  <% } %>
-</div>
-
+    <% if (error) { %>
+      <p class="error">
+        <%= error %>
+      </p>
+      <% } %>
+  </div>
 
 </body>
+
 </html>
